@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Barbell",
+        "color": "#C06687"
+    },
+    {
+        "name": "Bench",
+        "color": "#82CDF1"
+    },
+    {
+        "name": "Incline Bench",
+        "color": "#D8E368"
+    },
+    {
+        "name": "Dumbells",
+        "color": "#64B5F6"
+    },
+    {
+        "name": "Barbell/Dumbell",
+        "color": "#EBA5A5"
+    },
+    {
+        "name": "Overhead Bar",
+        "color": "#C786D2"
+    },
+    {
+        "name": "Machine",
+        "color": "#DEDEDE"
+    },
+    {
+        "name": "Cables",
+        "color": "#AEDEDE"
+    }
+]
