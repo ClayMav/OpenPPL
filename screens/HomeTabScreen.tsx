@@ -9,7 +9,7 @@ function QuickStartButton({ children, onPress }: any) {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className=" shadow-black shadow-md bg-white p-6 grow m-4 rounded-xl h-32 flex align-center"
+      className=" border-2 border-teal-400 p-6 grow m-4 rounded-xl h-32 flex align-center"
     >
       <Text className="text-center text-xl">{children}</Text>
     </TouchableOpacity>
@@ -20,7 +20,7 @@ export default function HomeTabScreen({
   navigation,
 }: RootTabScreenProps<"HomeTab">) {
   return (
-    <View className="bg-white h-screen">
+    <View className=" h-screen">
       <View className="m-6 mb-0">
         <Text className="text-2xl">Next Workout</Text>
         <Text className="text-3xl font-bold mt-2">Legs, Today at 5pm</Text>

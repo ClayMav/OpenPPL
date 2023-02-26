@@ -1,0 +1,36 @@
+import * as Notifications from "expo-notifications";
+
+export function shuffle(array: any[]) {
+  if (!array || array.length < 2) {
+    return array;
+  }
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
+export function sendNotification(body: string, title = "PushPullLegs") {
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title,
+      body,
+      sound: true,
+      vibrate: [10, 10, 10],
+    },
+    trigger: null,
+  });
+}

@@ -124,10 +124,178 @@
         "Forearms": []
     },
     "Legs": {
-        "Quads": [],
-        "Hamstrings": [],
-        "Calves": [],
-        "Glutes": [],
-        "Abs": []
+        "Legs": [
+            {
+                "name": "Lunges",
+                "requirements": [
+                    3
+                ]
+            },
+            {
+                "name": "Squats",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Front Squats",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Single Leg Split Squat",
+                "requirements": [
+                    4,
+                    1
+                ]
+            },
+            {
+                "name": "Step Up",
+                "requirements": [
+                    4,
+                    1
+                ]
+            },
+            {
+                "name": "Leg Extension",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Leg Press",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Leg Curl",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Calf Raise",
+                "requirements": [
+                    4
+                ]
+            }
+        ],
+        "Glutes": [
+            {
+                "name": "Good-morning",
+                "requirements": [
+                    1
+                ]
+            },
+            {
+                "name": "Hyperextensions",
+                "requirements": [
+                    13
+                ]
+            },
+            {
+                "name": "Hip Abduction",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Hip Thrust",
+                "requirements": [
+                    0,
+                    1
+                ]
+            }
+        ],
+        "Abs": [
+            {
+                "name": "Push Crunch",
+                "requirements": [
+                    9,
+                    4
+                ]
+            },
+            {
+                "name": "Push Sit Up",
+                "requirements": [
+                    9,
+                    4
+                ]
+            },
+            {
+                "name": "Seated Crunch",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Ab Coaster",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Incline Sit Up",
+                "requirements": [
+                    9
+                ]
+            },
+            {
+                "name": "Leg-Hip Raise",
+                "requirements": [
+                    8
+                ]
+            },
+            {
+                "name": "Leg-Hip Raise",
+                "requirements": [
+                    8
+                ]
+            },
+            {
+                "name": "Twisting Leg-Hip Raise",
+                "requirements": [
+                    8
+                ]
+            },
+            {
+                "name": "Front Plank"
+            },
+            {
+                "name": "Side Plank"
+            },
+            {
+                "name": "Side Bridge"
+            },
+            {
+                "name": "Lying Twist"
+            },
+            {
+                "name": "Russian Twist",
+                "requirements": [
+                    10
+                ]
+            },
+            {
+                "name": "Side Bend",
+                "requirements": [
+                    3
+                ]
+            },
+            {
+                "name": "Cable Twist",
+                "requirements": [
+                    11
+                ]
+            },
+            {
+                "name": "Kneeling Rollout",
+                "requirements": [
+                    12
+                ]
+            }
+        ]
     }
 }

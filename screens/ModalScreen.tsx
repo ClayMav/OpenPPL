@@ -3,25 +3,25 @@ import { Button, ScrollView, TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
 import exercises from "../data/exercises/exercises.json";
 import equipment from "../data/equipment/equipment.json";
+import { sendNotification, shuffle } from "../utils";
 
-function shuffle(array: any[]) {
-  let currentIndex = array.length,
-    randomIndex;
+interface Requirement {
+  name: string;
+  color: string;
+}
+type EquipmentData = Requirement[];
+const equipmentData = equipment as EquipmentData;
+const exercisesData = exercises as ExerciseData;
 
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+interface Exercise {
+  name: string;
+  requirements?: number[];
+}
 
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-
-  return array;
+interface ExerciseData {
+  [key: string]: {
+    [key: string]: Exercise[];
+  };
 }
 
 function MuscleGroupListItem({
@@ -48,21 +48,13 @@ function MuscleGroupListItem({
 function Requirement({ requirement }: { requirement: Requirement }) {
   return (
     <View
+      className="rounded-full p-1 pl-4 pr-4 mr-1"
       style={{ backgroundColor: requirement.color }}
-      className="rounded-full inline-flex p-1 pl-4 pr-4 mr-1"
     >
-      <Text className="text-center">{requirement.name}</Text>
+      <Text className="text-center dark:text-black">{requirement.name}</Text>
     </View>
   );
 }
-
-interface Requirement {
-  name: string;
-  color: string;
-}
-type EquipmentData = Requirement[];
-const equipmentData = equipment as EquipmentData;
-const exercisesData = exercises as ExerciseData;
 
 function ExerciseListItem({
   title,
@@ -75,18 +67,17 @@ function ExerciseListItem({
 }) {
   return (
     <TouchableOpacity
-      className="bg-white rounded-full shadow-sm shadow-black flex p-6 pl-8 pr-8 flex-row items-center m-6 mb-0"
+      className=" rounded-full shadow-sm shadow-black flex p-6 pl-8 pr-8 flex-row items-center m-6 mb-0"
       onPress={onPress}
     >
       <Text className="font-bold text-xl w-32">{title}</Text>
-      {requirements && (
+      {requirements !== undefined && requirements.length > 0 && (
         <View className="ml-4">
           <Text>Requires:</Text>
           <View className="flex flex-row mt-1">
-            {requirements?.map((requirement, index) => {
-              return (
-                <Requirement key={index} requirement={equipment[requirement]} />
-              );
+            {requirements.map((requirement, index) => {
+              const equipment = equipmentData[requirement];
+              return <Requirement key={index} requirement={equipment} />;
             })}
           </View>
         </View>
@@ -95,27 +86,7 @@ function ExerciseListItem({
   );
 }
 
-interface Exercise {
-  name: string;
-  requirements?: number[];
-}
-
-interface ExerciseData {
-  [key: string]: {
-    [key: string]: Exercise[];
-  };
-}
-
-function shuffleArray(array: any[]) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-}
-
-const startSeconds = 120;
+const startSeconds = 5;
 function Exercising({
   exercise,
   onBack,
@@ -134,6 +105,7 @@ function Exercising({
       }, 1000);
     }
     if (seconds < 1) {
+      sendNotification("Rest period is over!");
       clearInterval(interval);
       setSeconds(0);
     }
@@ -176,15 +148,14 @@ export default function ModalScreen({ navigation, route }: any) {
   );
   const [selectedGroup, setSelectedGroup] = useState<number>(0);
   const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]);
-
-  const { workout } = route.params;
-  const data = exercisesData[workout];
-  const muscleGroups = Object.keys(data);
+  const [workout] = useState(route.params.workout);
+  const [workoutData] = useState(exercisesData[workout]);
 
   useEffect(() => {
+    const muscleGroups = Object.keys(workoutData);
     const tempSelectedMuscleGroups = [...shuffle(muscleGroups)];
     // 6 is the number of exercises to include
-    const numExercises = 6;
+    const numExercises = 5;
     // Need to include 6 exercises from the list of groups but if there is less, randomly add
     const numMissing = numExercises - muscleGroups.length;
     if (numMissing > 0) {
@@ -206,9 +177,26 @@ export default function ModalScreen({ navigation, route }: any) {
     setSelectedExercises([...selectedExercises]);
   };
 
-  console.log(selectedMuscleGroups, selectedExercises);
+  let exercises: Exercise[] = [];
+  if (selectedMuscleGroups.length > 0) {
+    let groupExercises = workoutData[selectedMuscleGroups[selectedGroup]];
+    groupExercises = shuffle(groupExercises);
+    exercises = groupExercises.slice(
+      0,
+      Math.min(5, workoutData[selectedMuscleGroups[selectedGroup]].length)
+    );
+  }
+
+  console.log(
+    `ModalScreen:
+    groups: ${JSON.stringify(selectedMuscleGroups)},
+    group: ${selectedGroup},
+    exercises: ${JSON.stringify(exercises.map((exercise) => exercise.name))},
+    selectedExercises: ${JSON.stringify(selectedExercises)},
+    workout: ${workout}`
+  );
   return (
-    <View className="bg-white h-screen">
+    <View className=" h-full flex">
       <Text className="text-2xl font-bold m-6">Muscle Groups</Text>
       <View className="h-32">
         <ScrollView horizontal={true} className="flex flex-row">
@@ -230,18 +218,14 @@ export default function ModalScreen({ navigation, route }: any) {
           onBack={() => handleSelectedExercise(undefined)}
         />
       ) : (
-        <View className="">
+        <View className="flex grow">
           <Text className="text-xl font-bold m-6 mb-0">
             Which Exercise do you want to do?
           </Text>
-          <ScrollView className="pb-32" style={{ height: 500 }}>
-            {selectedMuscleGroups.length > 0 &&
-              shuffle(data[selectedMuscleGroups[selectedGroup]])
-                .slice(
-                  0,
-                  Math.min(5, data[selectedMuscleGroups[selectedGroup]].length)
-                )
-                .map((exercise, index) => {
+          <View className=" grow h-64">
+            <ScrollView className="">
+              {exercises.length > 0 &&
+                exercises.map((exercise, index) => {
                   return (
                     <ExerciseListItem
                       key={index}
@@ -251,24 +235,33 @@ export default function ModalScreen({ navigation, route }: any) {
                     />
                   );
                 })}
-          </ScrollView>
+              <ExerciseListItem
+                title="Other"
+                onPress={() => handleSelectedExercise({ name: "Other" })}
+              />
+            </ScrollView>
+          </View>
         </View>
       )}
-      <View className="flex flex-row w-full justify-between p-6 absolute bottom-36 bg-transparent">
+      <View className=" flex-row w-full justify-between p-6 flex bg-transparent">
         <TouchableOpacity className=" bottom-0 bg-red-400 rounded-full p-4 pl-8 pr-8">
           <Text className="font-medium">End Workout</Text>
         </TouchableOpacity>
         <TouchableOpacity
           className=" bottom-0 bg-green-400 rounded-full p-4 pl-8 pr-8"
           onPress={() => {
-            if (selectedGroup === muscleGroups.length) {
+            if (selectedGroup === selectedMuscleGroups.length - 1) {
               navigation.goBack();
             } else {
               setSelectedGroup(selectedGroup + 1);
             }
           }}
         >
-          <Text className="font-medium">Next Muscle Group</Text>
+          <Text className="font-medium">
+            {selectedGroup === selectedMuscleGroups.length
+              ? "Finish Workout"
+              : "Next Muscle Group"}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
