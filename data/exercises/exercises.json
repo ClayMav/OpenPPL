@@ -118,10 +118,83 @@
         ]
     },
     "Pull": {
-        "Back": [],
-        "Biceps": [],
-        "Traps": [],
-        "Forearms": []
+        "Back": [
+            {
+                "name": "Bent-over Row",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Seated Row",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Front Pulldown",
+                "requirements": [
+                    6
+                ]
+            },
+            {
+                "name": "Pull Up",
+                "requirements": [
+                    5
+                ]
+            },
+            {
+                "name": "Shrug",
+                "requirements": [
+                    4
+                ]
+            }
+        ],
+        "Arms": [
+            {
+                "name": "Chin Up",
+                "requirements": [
+                    5
+                ]
+            },
+            {
+                "name": "Curl",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Preacher Curl",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Reverse Curl",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Reverse Preacher Curl",
+                "requirements": [
+                    4
+                ]
+            },
+            {
+                "name": "Hammer Curl",
+                "requirements": [
+                    3
+                ]
+            },
+            {
+                "name": "Concentration Curl",
+                "requirements": [
+                    3,
+                    1
+                ]
+            }
+        ]
     },
     "Legs": {
         "Legs": [
