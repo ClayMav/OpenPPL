@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
-import { Button, ScrollView, TouchableOpacity } from "react-native";
+import {
+  ActivityIndicator,
+  Button,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { Text, View } from "../components/Themed";
 import exercises from "../data/exercises/exercises.json";
 import equipment from "../data/equipment/equipment.json";
 import { sendNotification, shuffle } from "../utils";
+import { RestTimer } from "../components/RestTimer";
+import { Workouts } from "../types";
+import { WorkoutActions } from "../components/WorkoutActions";
 
 interface Requirement {
   name: string;
@@ -18,11 +26,11 @@ interface Exercise {
   requirements?: number[];
 }
 
-interface ExerciseData {
-  [key: string]: {
+type ExerciseData = {
+  [key in Workouts]: {
     [key: string]: Exercise[];
   };
-}
+};
 
 function MuscleGroupListItem({
   title,
@@ -48,7 +56,7 @@ function MuscleGroupListItem({
 function Requirement({ requirement }: { requirement: Requirement }) {
   return (
     <View
-      className="rounded-full p-1 pl-4 pr-4 mr-1"
+      className="rounded-full py-1 px-4 mr-1 mb-1"
       style={{ backgroundColor: requirement.color }}
     >
       <Text className="text-center dark:text-black">{requirement.name}</Text>
@@ -67,14 +75,14 @@ function ExerciseListItem({
 }) {
   return (
     <TouchableOpacity
-      className=" rounded-full shadow-sm shadow-black flex p-6 pl-8 pr-8 flex-row items-center m-6 mb-0"
+      className=" dark:border-2 dark:border-teal-400 rounded-full dark:shadow-none shadow-sm shadow-black flex p-6 pl-8 pr-8 flex-row items-center mt-6 mx-4 mb-0 justify-between"
       onPress={onPress}
     >
-      <Text className="font-bold text-xl w-32">{title}</Text>
+      <Text className="font-bold text-xl grow basis-44 min-w-0">{title}</Text>
       {requirements !== undefined && requirements.length > 0 && (
-        <View className="ml-4">
+        <View className="ml-4 bg-transparent min-w-[8rem] w-0 grow basis-0">
           <Text>Requires:</Text>
-          <View className="flex flex-row mt-1">
+          <View className="flex flex-row mt-1 bg-transparent flex-wrap">
             {requirements.map((requirement, index) => {
               const equipment = equipmentData[requirement];
               return <Requirement key={index} requirement={equipment} />;
@@ -86,7 +94,7 @@ function ExerciseListItem({
   );
 }
 
-const startSeconds = 5;
+const startSeconds = 120;
 function Exercising({
   exercise,
   onBack,
@@ -94,29 +102,6 @@ function Exercising({
   exercise: Exercise;
   onBack: () => void;
 }) {
-  const [seconds, setSeconds] = useState(startSeconds);
-  const [timerActive, setTimerActive] = useState(false);
-
-  useEffect(() => {
-    let interval: number = 0;
-    if (timerActive) {
-      interval = setInterval(() => {
-        setSeconds((seconds) => seconds - 1);
-      }, 1000);
-    }
-    if (seconds < 1) {
-      sendNotification("Rest period is over!");
-      clearInterval(interval);
-      setSeconds(0);
-    }
-    return () => clearInterval(interval);
-  }, [seconds, timerActive]);
-
-  const startTimer = () => {
-    setSeconds(startSeconds);
-    setTimerActive(true);
-  };
-
   return (
     <View className="m-6">
       <Button title="Back" onPress={onBack} />
@@ -127,45 +112,71 @@ function Exercising({
         <Text>10 Reps</Text>
         <Text>135 lbs</Text>
       </View>
-      <View className="flex items-center justify-center mt-8">
-        <Text className="text-2xl font-bold">Rest Timer</Text>
-        <TouchableOpacity
-          className="mt-6 w-48 h-48 bg-teal-500 rounded-full flex items-center justify-center p-8"
-          onPress={() => startTimer()}
-        >
-          <Text className="text-white text-4xl font-bold text-center">
-            {seconds}s
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <RestTimer seconds={startSeconds} />
     </View>
   );
 }
 
-export default function ModalScreen({ navigation, route }: any) {
-  const [selectedMuscleGroups, setSelectedMuscleGroups] = useState<string[]>(
-    []
+function selectMuscleGroups(workoutDataMuscleGroups: string[]): string[] {
+  let tempMuscleGroups = [...shuffle(workoutDataMuscleGroups)];
+  // If there are less muscle groups in the workout than the required number of exercises
+  // we need to add some more of the same groups to the end
+  const numMissing = numExercises - workoutDataMuscleGroups.length;
+  if (numMissing > 0) {
+    const repeatGroups = shuffle(workoutDataMuscleGroups);
+    for (let i = 0; i < numMissing; i++) {
+      tempMuscleGroups.push(repeatGroups.pop() as string); // Removes a group from the list as it adds them so no duplicates
+    }
+  }
+  return tempMuscleGroups;
+}
+
+function Loading() {
+  return (
+    <View className="flex h-full items-center justify-center">
+      <ActivityIndicator size="large" color="#00ff00" />
+    </View>
   );
-  const [selectedGroup, setSelectedGroup] = useState<number>(0);
-  const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]);
-  const [workout] = useState(route.params.workout);
+}
+
+const numExercises = 5; // TODO
+export default function ModalScreen({ navigation, route }: any) {
+  const [workout] = useState<Workouts>(route.params.workout); // name of the workout
   const [workoutData] = useState(exercisesData[workout]);
 
+  const [muscleGroups, setMuscleGroups] = useState<string[]>([]); // List of muscle groups to be tackled in this workout
+  const [exercises, setExercises] = useState<Exercise[][]>([]); // List of exercises offered to be tackled in this workout
+  const [selectedGroup, setSelectedGroup] = useState<number>(0); // Index in the muscleGroup array of the currently selected muscle group
+  const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]); // Exercise data for selected exercise in each group
+
+  const [loading, setLoading] = useState(true);
+
+  // Hook for setting the selected muscle groups for the workout
   useEffect(() => {
-    const muscleGroups = Object.keys(workoutData);
-    const tempSelectedMuscleGroups = [...shuffle(muscleGroups)];
-    // 6 is the number of exercises to include
-    const numExercises = 5;
-    // Need to include 6 exercises from the list of groups but if there is less, randomly add
-    const numMissing = numExercises - muscleGroups.length;
-    if (numMissing > 0) {
-      const shuffledMuscleGroups = shuffle(muscleGroups);
-      for (let i = 0; i < numMissing; i++) {
-        tempSelectedMuscleGroups.push(shuffledMuscleGroups.pop() as string);
-      }
-    }
-    setSelectedMuscleGroups(tempSelectedMuscleGroups);
+    setMuscleGroups(selectMuscleGroups(Object.keys(workoutData)));
   }, []);
+
+  // Hook for storing the possible exercises for the selected group
+  useEffect(() => {
+    if (muscleGroups.length < 1 || exercises[selectedGroup]?.length > 0) {
+      return;
+    }
+
+    let workoutDataMuscleGroupExercises =
+      workoutData[muscleGroups[selectedGroup]];
+    const tempExercises = [...exercises];
+    tempExercises[selectedGroup] = shuffle(
+      workoutDataMuscleGroupExercises
+    ).slice(0, Math.min(5, workoutDataMuscleGroupExercises.length));
+    setExercises(tempExercises);
+  }, [muscleGroups, selectedGroup]);
+
+  // Loading hook
+  useEffect(() => {
+    if (muscleGroups.length > 0 && exercises.length > 0) {
+      setLoading(false);
+    }
+  }, [muscleGroups, exercises]);
 
   const handleSelectedExercise = (exercise: Exercise | undefined) => {
     // selected exercises
@@ -177,30 +188,36 @@ export default function ModalScreen({ navigation, route }: any) {
     setSelectedExercises([...selectedExercises]);
   };
 
-  let exercises: Exercise[] = [];
-  if (selectedMuscleGroups.length > 0) {
-    let groupExercises = workoutData[selectedMuscleGroups[selectedGroup]];
-    groupExercises = shuffle(groupExercises);
-    exercises = groupExercises.slice(
-      0,
-      Math.min(5, workoutData[selectedMuscleGroups[selectedGroup]].length)
-    );
-  }
+  const onEndPress = () => {
+    navigation.goBack();
+  };
+  const onNextPress = () => {
+    if (selectedGroup === muscleGroups.length - 1) {
+      navigation.goBack();
+    } else {
+      setSelectedGroup(selectedGroup + 1);
+    }
+  };
 
   console.log(
     `ModalScreen:
-    groups: ${JSON.stringify(selectedMuscleGroups)},
+    groups: ${JSON.stringify(muscleGroups)},
     group: ${selectedGroup},
-    exercises: ${JSON.stringify(exercises.map((exercise) => exercise.name))},
+    exercises: ${JSON.stringify(
+      exercises.map((exercise) => exercise[selectedGroup]?.name)
+    )},
     selectedExercises: ${JSON.stringify(selectedExercises)},
     workout: ${workout}`
   );
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <View className=" h-full flex">
       <Text className="text-2xl font-bold m-6">Muscle Groups</Text>
       <View className="h-32">
         <ScrollView horizontal={true} className="flex flex-row">
-          {selectedMuscleGroups.map((group, index) => {
+          {muscleGroups.map((group, index) => {
             return (
               <MuscleGroupListItem
                 key={index}
@@ -224,8 +241,8 @@ export default function ModalScreen({ navigation, route }: any) {
           </Text>
           <View className=" grow h-64">
             <ScrollView className="">
-              {exercises.length > 0 &&
-                exercises.map((exercise, index) => {
+              {!loading && exercises[selectedGroup]?.length > 0 ? (
+                exercises[selectedGroup].map((exercise, index) => {
                   return (
                     <ExerciseListItem
                       key={index}
@@ -234,36 +251,23 @@ export default function ModalScreen({ navigation, route }: any) {
                       onPress={() => handleSelectedExercise(exercise)}
                     />
                   );
-                })}
+                })
+              ) : (
+                <Loading />
+              )}
               <ExerciseListItem
                 title="Other"
                 onPress={() => handleSelectedExercise({ name: "Other" })}
               />
             </ScrollView>
           </View>
+          <WorkoutActions
+            onEndPress={onEndPress}
+            onNextPress={onNextPress}
+            isLastExercise={selectedGroup === muscleGroups.length - 1}
+          />
         </View>
       )}
-      <View className=" flex-row w-full justify-between p-6 flex bg-transparent">
-        <TouchableOpacity className=" bottom-0 bg-red-400 rounded-full p-4 pl-8 pr-8">
-          <Text className="font-medium">End Workout</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className=" bottom-0 bg-green-400 rounded-full p-4 pl-8 pr-8"
-          onPress={() => {
-            if (selectedGroup === selectedMuscleGroups.length - 1) {
-              navigation.goBack();
-            } else {
-              setSelectedGroup(selectedGroup + 1);
-            }
-          }}
-        >
-          <Text className="font-medium">
-            {selectedGroup === selectedMuscleGroups.length
-              ? "Finish Workout"
-              : "Next Muscle Group"}
-          </Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

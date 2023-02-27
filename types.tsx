@@ -15,10 +15,10 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
-
+export type Workouts = "Push" | "Pull" | "Legs";
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: { workout: "Push" | "Pull" | "Legs" };
+  Modal: { workout: Workouts };
   NotFound: undefined;
 };
 

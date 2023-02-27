@@ -1,6 +1,5 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
 import PrimaryButton from "../components/PrimaryButton";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
@@ -9,7 +8,7 @@ function QuickStartButton({ children, onPress }: any) {
   return (
     <TouchableOpacity
       onPress={onPress}
-      className=" border-2 border-teal-400 p-6 grow m-4 rounded-xl h-32 flex align-center"
+      className=" dark:border-2 dark:border-teal-400 px-2 py-6 grow basis-0 w-0 my-4 mx-3 rounded-xl h-32 flex align-center"
     >
       <Text className="text-center text-xl">{children}</Text>
     </TouchableOpacity>
