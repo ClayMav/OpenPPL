@@ -1,12 +1,14 @@
+import "nativewind/types";
+
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import useCachedResources from "./hooks/useCachedResources";
-import useColorScheme from "./hooks/useColorScheme";
-import Navigation from "./navigation";
+import useCachedResources from "./src/hooks/useCachedResources";
+import useColorScheme from "./src/hooks/useColorScheme";
+import Navigation from "./src/navigation";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { type Notification } from "expo-notifications";
 import { Alert, Platform } from "react-native";
 
@@ -18,18 +20,16 @@ Notifications.setNotificationHandler({
   }),
 });
 
-export default function App() {
+export default function App(): JSX.Element {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
-  const [expoPushToken, setExpoPushToken] = useState("");
-  const [notification, setNotification] = useState<Notification | undefined>(
-    undefined
-  );
+  const [, setExpoPushToken] = useState("");
+  const [, setNotification] = useState<Notification | undefined>(undefined);
   const notificationListener = useRef<any>();
   const responseListener = useRef<any>();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => {
+    void registerForPushNotificationsAsync().then((token: unknown) => {
       setExpoPushToken(token as string);
     });
 
@@ -52,7 +52,7 @@ export default function App() {
   }, []);
 
   if (!isLoadingComplete) {
-    return null;
+    return <></>;
   } else {
     return (
       <SafeAreaProvider>
@@ -61,17 +61,6 @@ export default function App() {
       </SafeAreaProvider>
     );
   }
-}
-
-async function schedulePushNotification() {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title: "You've got mail! 📬",
-      body: "Here is the notification body",
-      data: { data: "goes here" },
-    },
-    trigger: { seconds: 2 },
-  });
 }
 
 async function registerForPushNotificationsAsync(): Promise<void> {
@@ -103,6 +92,4 @@ async function registerForPushNotificationsAsync(): Promise<void> {
   } else {
     Alert.alert("Must use physical device for Push Notifications");
   }
-
-  return token;
 }

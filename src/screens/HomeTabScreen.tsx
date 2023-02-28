@@ -1,8 +1,8 @@
+import React from "react";
 import { TouchableOpacity } from "react-native";
 
 import PrimaryButton from "../components/PrimaryButton";
 import { Text, View } from "../components/Themed";
-import { type RootTabScreenProps } from "../types";
 
 function QuickStartButton({ children, onPress }: any): JSX.Element {
   return (
@@ -17,14 +17,18 @@ function QuickStartButton({ children, onPress }: any): JSX.Element {
 
 export default function HomeTabScreen({
   navigation,
-}: RootTabScreenProps<"HomeTab">): JSX.Element {
+}: {
+  navigation: any;
+}): JSX.Element {
   return (
     <View className=" h-screen">
       <View className="m-6 mb-0">
         <Text className="text-2xl">Next Workout</Text>
         <Text className="text-3xl font-bold mt-2">Legs, Today at 5pm</Text>
         <PrimaryButton
-          onPress={() => navigation.navigate("Modal", { workout: "Legs" })}
+          onPress={() => {
+            navigation.navigate("Modal", { workout: "Legs" });
+          }}
         >
           Start Legs
         </PrimaryButton>
@@ -32,17 +36,23 @@ export default function HomeTabScreen({
       </View>
       <View className="flex flex-row m-2">
         <QuickStartButton
-          onPress={() => navigation.navigate("Modal", { workout: "Push" })}
+          onPress={() => {
+            navigation.navigate("Modal", { workout: "Push" });
+          }}
         >
           Push
         </QuickStartButton>
         <QuickStartButton
-          onPress={() => navigation.navigate("Modal", { workout: "Pull" })}
+          onPress={() => {
+            navigation.navigate("Modal", { workout: "Pull" });
+          }}
         >
           Pull
         </QuickStartButton>
         <QuickStartButton
-          onPress={() => navigation.navigate("Modal", { workout: "Legs" })}
+          onPress={() => {
+            navigation.navigate("Modal", { workout: "Legs" });
+          }}
         >
           Legs
         </QuickStartButton>

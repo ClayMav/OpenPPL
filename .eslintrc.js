@@ -11,9 +11,7 @@ module.exports = {
     project: ["./tsconfig.json"]
   },
   plugins: ["react"],
-  rules: {
-    "react/react-in-jsx-scope": 0
-  },
+  rules: {},
   settings: {
     react: {
       version: "detect"

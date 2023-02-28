@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 
 export default function PrimaryButton({ children, onPress }: any): JSX.Element {
