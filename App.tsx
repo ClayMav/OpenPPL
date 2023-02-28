@@ -7,7 +7,7 @@ import Navigation from "./navigation";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
 import { useEffect, useRef, useState } from "react";
-import { Notification } from "expo-notifications";
+import { type Notification } from "expo-notifications";
 import { Alert, Platform } from "react-native";
 
 Notifications.setNotificationHandler({
@@ -29,9 +29,9 @@ export default function App() {
   const responseListener = useRef<any>();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then((token) =>
-      setExpoPushToken(token as string)
-    );
+    registerForPushNotificationsAsync().then((token) => {
+      setExpoPushToken(token as string);
+    });
 
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
@@ -74,7 +74,7 @@ async function schedulePushNotification() {
   });
 }
 
-async function registerForPushNotificationsAsync() {
+async function registerForPushNotificationsAsync(): Promise<void> {
   let token;
 
   if (Platform.OS === "android") {

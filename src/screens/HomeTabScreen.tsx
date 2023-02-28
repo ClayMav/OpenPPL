@@ -1,10 +1,10 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import PrimaryButton from "../components/PrimaryButton";
 import { Text, View } from "../components/Themed";
-import { RootTabScreenProps } from "../types";
+import { type RootTabScreenProps } from "../types";
 
-function QuickStartButton({ children, onPress }: any) {
+function QuickStartButton({ children, onPress }: any): JSX.Element {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -17,7 +17,7 @@ function QuickStartButton({ children, onPress }: any) {
 
 export default function HomeTabScreen({
   navigation,
-}: RootTabScreenProps<"HomeTab">) {
+}: RootTabScreenProps<"HomeTab">): JSX.Element {
   return (
     <View className=" h-screen">
       <View className="m-6 mb-0">
@@ -50,20 +50,3 @@ export default function HomeTabScreen({
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});

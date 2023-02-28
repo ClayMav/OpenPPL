@@ -8,7 +8,7 @@ export function WorkoutActions({
   onEndPress: () => void;
   onNextPress: () => void;
   isLastExercise: boolean;
-}) {
+}): JSX.Element {
   return (
     <View className=" flex-row w-full justify-between p-6 flex bg-transparent">
       <TouchableOpacity

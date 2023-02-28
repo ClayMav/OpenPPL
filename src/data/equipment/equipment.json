@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Barbell",
+    "color": "#C06687"
+  },
+  {
+    "name": "Bench",
+    "color": "#82CDF1"
+  },
+  {
+    "name": "Incline Bench",
+    "color": "#D8E368"
+  },
+  {
+    "name": "Dumbells",
+    "color": "#64B5F6"
+  },
+  {
+    "name": "Barbell/Dumbell",
+    "color": "#EBA5A5"
+  },
+  {
+    "name": "Overhead Bar",
+    "color": "#C786D2"
+  },
+  {
+    "name": "Machine",
+    "color": "#DEDEDE"
+  },
+  {
+    "name": "Cables",
+    "color": "#AEDEDE"
+  },
+  {
+    "name": "Knee Raise",
+    "color": "#CEEE9E"
+  },
+  {
+    "name": "Sit Up Bench",
+    "color": "#D4EE9E"
+  },
+  {
+    "name": "Medicine Ball",
+    "color": "#A4B49E"
+  },
+  {
+    "name": "Cable Machine",
+    "color": "#E4B91E"
+  },
+  {
+    "name": "Rollout Wheel",
+    "color": "#A2B11E"
+  },
+  {
+    "name": "Hyperextension Bench",
+    "color": "#92B91E"
+  }
+]

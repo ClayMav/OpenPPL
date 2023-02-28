@@ -1,6 +1,6 @@
-import { Button, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
-export default function PrimaryButton({ children, onPress }: any) {
+export default function PrimaryButton({ children, onPress }: any): JSX.Element {
   return (
     <TouchableOpacity
       className=" rounded-full bg-green-300 text-black p-4 mt-8"

@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   NavigationContainer,
@@ -13,13 +13,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import {
-  Button,
-  ColorSchemeName,
-  Pressable,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { Button, type ColorSchemeName } from "react-native";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -28,19 +22,17 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import HomeTabScreen from "../screens/HomeTabScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
+  type RootStackParamList,
+  type RootTabParamList,
+  type RootTabScreenProps,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
-import { HeaderButtonProps } from "@react-navigation/native-stack/lib/typescript/src/types";
-import { useState } from "react";
 
 export default function Navigation({
   colorScheme,
 }: {
   colorScheme: ColorSchemeName;
-}) {
+}): JSX.Element {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -57,7 +49,7 @@ export default function Navigation({
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
+function RootNavigator(): JSX.Element {
   const navigation = useNavigation();
   return (
     <Stack.Navigator>
@@ -88,7 +80,7 @@ function RootNavigator() {
           name="Modal"
           component={ModalScreen}
           options={({ route }) => ({
-            title: `${route.params.workout} Workout`,
+            title: `${String(route.params.workout)} Workout`,
           })}
         />
       </Stack.Group>
@@ -102,7 +94,7 @@ function RootNavigator() {
  */
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
-function BottomTabNavigator() {
+function BottomTabNavigator(): JSX.Element {
   const colorScheme = useColorScheme();
 
   return (
@@ -138,6 +130,6 @@ function BottomTabNavigator() {
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
-}) {
+}): JSX.Element {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }

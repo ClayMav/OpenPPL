@@ -1,14 +1,14 @@
 import * as Notifications from "expo-notifications";
 
-export function shuffle(array: any[]) {
-  if (!array || array.length < 2) {
+export function shuffle(array: any[]): any[] {
+  if (array.length < 2) {
     return array;
   }
-  let currentIndex = array.length,
-    randomIndex;
+  let currentIndex = array.length;
+  let randomIndex;
 
   // While there remain elements to shuffle.
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
     // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
@@ -23,8 +23,11 @@ export function shuffle(array: any[]) {
   return array;
 }
 
-export function sendNotification(body: string, title = "PushPullLegs") {
-  Notifications.scheduleNotificationAsync({
+export async function sendNotification(
+  body: string,
+  title = "PushPullLegs"
+): Promise<void> {
+  await Notifications.scheduleNotificationAsync({
     content: {
       title,
       body,
