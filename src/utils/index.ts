@@ -1,6 +1,6 @@
 import * as Notifications from "expo-notifications";
 
-export function shuffle(array: any[]): any[] {
+export function shuffle<T>(array: T[]): T[] {
   if (array.length < 2) {
     return array;
   }

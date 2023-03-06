@@ -16,5 +16,5 @@
     "strict": true,
     "moduleResolution": "node",
   },
-  "include": ["./App.tsx","./src/**/*"],
+  "include": ["./App.tsx","./src/**/*","app.d.ts"],
 }

@@ -1,10 +1,9 @@
-import "nativewind/types";
-
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import useCachedResources from "./src/hooks/useCachedResources";
 import useColorScheme from "./src/hooks/useColorScheme";
+import { useColorScheme as useNativeWindColorScheme } from "nativewind";
 import Navigation from "./src/navigation";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
@@ -23,6 +22,10 @@ Notifications.setNotificationHandler({
 export default function App(): JSX.Element {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+  const { setColorScheme } = useNativeWindColorScheme();
+  useEffect(() => {
+    setColorScheme(colorScheme);
+  }, [colorScheme]);
   const [, setExpoPushToken] = useState("");
   const [, setNotification] = useState<Notification | undefined>(undefined);
   const notificationListener = useRef<any>();
@@ -56,7 +59,7 @@ export default function App(): JSX.Element {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <Navigation />
         <StatusBar />
       </SafeAreaProvider>
     );

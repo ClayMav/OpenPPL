@@ -6,33 +6,29 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
-  NavigationContainer,
-  DefaultTheme,
   DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
   useNavigation,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { Button, type ColorSchemeName } from "react-native";
+import { Button } from "react-native";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
+import WorkoutScreen from "../screens/WorkoutScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import HomeTabScreen from "../screens/HomeTabScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import { type RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import useColorScheme from "../hooks/useColorScheme";
 
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}): JSX.Element {
+export default function Navigation(): JSX.Element {
+  const scheme = useColorScheme();
   return (
     <NavigationContainer
+      theme={scheme === "dark" ? DarkTheme : DefaultTheme}
       linking={LinkingConfiguration}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
     </NavigationContainer>
@@ -74,7 +70,7 @@ function RootNavigator(): JSX.Element {
       >
         <Stack.Screen
           name="Modal"
-          component={ModalScreen}
+          component={WorkoutScreen}
           options={({ route }) => ({
             title: `${String(route.params.workout)} Workout`,
           })}
@@ -91,15 +87,8 @@ function RootNavigator(): JSX.Element {
 const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator(): JSX.Element {
-  const colorScheme = useColorScheme();
-
   return (
-    <BottomTab.Navigator
-      initialRouteName="HomeTab"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}
-    >
+    <BottomTab.Navigator initialRouteName="HomeTab">
       <BottomTab.Screen
         name="HomeTab"
         component={HomeTabScreen}
