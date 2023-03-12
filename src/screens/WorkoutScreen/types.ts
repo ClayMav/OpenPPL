@@ -1,16 +1,24 @@
 import { type Workouts } from "src/types";
 
-export interface IRequirement {
-  name: string;
+export interface Equipment {
   color: string;
+  weight?: boolean;
+  maxable?: boolean;
 }
-export type EquipmentData = IRequirement[];
+
+export type EquipmentData = Record<string, Equipment>;
+
+export interface ExerciseType {
+  name: string;
+  options: Exercise[];
+}
 
 export interface Exercise {
   name: string;
-  requirements?: number[];
+  requirements?: string[];
+  optional?: string[];
 }
 
 export type ExerciseData = {
-  [key in Workouts]: Record<string, Exercise[]>;
+  [key in Workouts]: Record<string, ExerciseType[]>;
 };

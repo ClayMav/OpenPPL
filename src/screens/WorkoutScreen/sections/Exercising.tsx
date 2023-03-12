@@ -13,6 +13,7 @@ const NumberEntry = ({
   onSubmit,
   label,
   classNames,
+  unit,
 }: {
   firstTime: boolean;
   onChangeText: (val: string) => void;
@@ -20,6 +21,7 @@ const NumberEntry = ({
   onSubmit?: () => void;
   label: string;
   classNames?: string;
+  unit?: string;
 }): JSX.Element => {
   return (
     <View className={classNames}>
@@ -27,12 +29,19 @@ const NumberEntry = ({
         {label}
       </Text>
       <View className="flex flex-row w-full">
-        <TextInput
-          className="text-black dark:text-white text-3xl border-2 border-white h-12 text-center rounded-lg grow mr-2 px-4 py-0"
-          onChangeText={onChangeText}
-          value={value > 0 ? String(value) : undefined}
-          keyboardType="numeric"
-        />
+        <View className="border-2 border-white h-12 text-center rounded-lg grow mr-2 px-4 py-0 flex flex-row items-center">
+          <TextInput
+            onChangeText={onChangeText}
+            value={value > 0 ? String(value) : undefined}
+            keyboardType="numeric"
+            className="grow text-black dark:text-white text-xl "
+          />
+          {unit !== undefined && (
+            <Text className="text-black dark:text-gray-400 text-xl">
+              {unit}
+            </Text>
+          )}
+        </View>
         {onSubmit !== undefined && (
           <Button title={firstTime ? "Save" : "Update"} onPress={onSubmit} />
         )}
@@ -53,6 +62,10 @@ export function Exercising({
     return state;
   });
   const [firstTime] = useState(maxes[exercise.name] === undefined);
+
+  // Derived values
+  // weightable decides if we should save a weight for it
+  // maxable decides if we should save a max for it
 
   let percent = 60;
   let sets = 3;
@@ -156,6 +169,7 @@ export function Exercising({
           onChangeText={(val) => {
             onChangeWeightAchieved(val);
           }}
+          unit="lbs"
           value={weightAchieved}
           onSubmit={() => {
             calculateMax();

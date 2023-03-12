@@ -4,7 +4,7 @@ import exercises from "../../data/exercises/exercises.json";
 import { shuffle } from "../../utils";
 import { WorkoutActions } from "./sections/WorkoutActions";
 import { ExerciseSelectionList, Exercising, WorkoutHeader } from "./sections";
-import { type Exercise, type ExerciseData } from "./types";
+import { type ExerciseType, type Exercise, type ExerciseData } from "./types";
 import { type Workouts } from "../../types";
 import { useStore } from "../../hooks/useStore";
 
@@ -55,9 +55,14 @@ export default function WorkoutScreen({ navigation, route }: any): JSX.Element {
     const workoutDataMuscleGroupExercises =
       workoutData[muscleGroups[selectedGroup]];
     const tempExercises = [...exercises];
-    tempExercises[selectedGroup] = shuffle(
-      workoutDataMuscleGroupExercises
-    ).slice(0, Math.min(5, workoutDataMuscleGroupExercises.length));
+    const exerciseSets = shuffle(workoutDataMuscleGroupExercises).slice(
+      0,
+      Math.min(5, workoutDataMuscleGroupExercises.length)
+    );
+    const groupExercises = exerciseSets.map(
+      (exerciseType: ExerciseType) => shuffle(exerciseType.options)[0]
+    );
+    tempExercises[selectedGroup] = groupExercises;
     setExercises(tempExercises);
   }, [muscleGroups, selectedGroup]);
 

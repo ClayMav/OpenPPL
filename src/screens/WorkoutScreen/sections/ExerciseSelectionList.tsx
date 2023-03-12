@@ -1,22 +1,24 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { type EquipmentData, type Exercise, type IRequirement } from "../types";
+import { type Equipment, type EquipmentData, type Exercise } from "../types";
 import equipment from "../../../data/equipment/equipment.json";
 
 export const equipmentData = equipment as EquipmentData;
 
 function Requirement({
   requirement,
+  equipment,
 }: {
-  requirement: IRequirement;
+  requirement: string;
+  equipment: Equipment;
 }): JSX.Element {
   return (
     <View
       className="rounded-full py-1 px-4 mr-1 mb-1"
-      style={{ backgroundColor: requirement.color }}
+      style={{ backgroundColor: equipment.color }}
     >
       <Text className="text-center text-black text-sm whitespace-nowrap">
-        {requirement.name}
+        {requirement}
       </Text>
     </View>
   );
@@ -28,7 +30,7 @@ function ExerciseListItem({
   onPress,
 }: {
   title: string;
-  requirements?: number[];
+  requirements?: string[];
   onPress: any;
 }): JSX.Element {
   return (
@@ -45,7 +47,13 @@ function ExerciseListItem({
           <View className="flex flex-row mt-1 bg-transparent flex-wrap">
             {requirements.map((requirement, index) => {
               const equipment = equipmentData[requirement];
-              return <Requirement key={index} requirement={equipment} />;
+              return (
+                <Requirement
+                  key={index}
+                  equipment={equipment}
+                  requirement={requirement}
+                />
+              );
             })}
           </View>
         </View>
