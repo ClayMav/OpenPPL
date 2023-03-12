@@ -5,7 +5,8 @@ import { shuffle } from "../../utils";
 import { WorkoutActions } from "./sections/WorkoutActions";
 import { ExerciseSelectionList, Exercising, WorkoutHeader } from "./sections";
 import { type Exercise, type ExerciseData } from "./types";
-import { type Workouts } from "src/types";
+import { type Workouts } from "../../types";
+import { useStore } from "../../hooks/useStore";
 
 const exercisesData = exercises as ExerciseData;
 
@@ -27,10 +28,13 @@ function selectMuscleGroups(workoutDataMuscleGroups: string[]): string[] {
 }
 
 export default function WorkoutScreen({ navigation, route }: any): JSX.Element {
-  const [workout] = useState<Workouts>(route.params.workout); // name of the workout
-  const [workoutData] = useState(exercisesData[workout]);
+  const { setActiveWorkout } = useStore((state) => {
+    return { setActiveWorkout: state.setActiveWorkout };
+  });
 
-  const [startTime] = useState(new Date());
+  const workout: Workouts = route.params.workout; // name of the workout
+  const workoutData = exercisesData[workout];
+
   const [muscleGroups, setMuscleGroups] = useState<string[]>([]); // List of muscle groups to be tackled in this workout
   const [exercises, setExercises] = useState<Exercise[][]>([]); // List of exercises offered to be tackled in this workout
   const [selectedGroup, setSelectedGroup] = useState<number>(0); // Index in the muscleGroup array of the currently selected muscle group
@@ -38,6 +42,7 @@ export default function WorkoutScreen({ navigation, route }: any): JSX.Element {
 
   // Hook for setting the selected muscle groups for the workout
   useEffect(() => {
+    setActiveWorkout(workout);
     setMuscleGroups(selectMuscleGroups(Object.keys(workoutData)));
   }, []);
 
@@ -84,7 +89,6 @@ export default function WorkoutScreen({ navigation, route }: any): JSX.Element {
         muscleGroups={muscleGroups}
         selectedGroup={selectedGroup}
         setSelectedGroup={setSelectedGroup}
-        startTime={startTime}
       />
       <View className="flex grow">
         {selectedExercises[selectedGroup] !== undefined ? (

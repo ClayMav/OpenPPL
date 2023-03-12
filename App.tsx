@@ -10,6 +10,7 @@ import * as Notifications from "expo-notifications";
 import React, { useEffect, useRef, useState } from "react";
 import { type Notification } from "expo-notifications";
 import { Alert, Platform } from "react-native";
+import Toast from "react-native-toast-message";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -61,6 +62,7 @@ export default function App(): JSX.Element {
       <SafeAreaProvider>
         <Navigation />
         <StatusBar />
+        <Toast />
       </SafeAreaProvider>
     );
   }

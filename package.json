@@ -1,20 +1,14 @@
 {
-  "name": "push-pull-legs",
+  "name": "openppl",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "test": "jest --watchAll",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "lint": "eslint src --ext js,jsx,ts,tsx",
     "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix",
     "format": "prettier --check src",
     "format:fix": "prettier --write src"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -22,8 +16,8 @@
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
-    "expo": "~48.0.5",
-    "expo-asset": "~8.9.0",
+    "expo": "^48.0.6",
+    "expo-asset": "~8.9.1",
     "expo-constants": "~14.2.1",
     "expo-device": "~5.2.1",
     "expo-font": "~11.1.1",
@@ -32,12 +26,18 @@
     "expo-splash-screen": "~0.18.1",
     "expo-status-bar": "~1.4.4",
     "expo-system-ui": "~2.2.1",
+    "expo-updates": "~0.16.3",
     "nativewind": "next",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.3",
+    "react-native-countdown-circle-timer": "^3.1.0",
+    "react-native-root-toast": "^3.4.1",
     "react-native-safe-area-context": "4.5.0",
-    "react-native-screens": "~3.20.0"
+    "react-native-screens": "~3.20.0",
+    "react-native-svg": "13.4.0",
+    "react-native-toast-message": "^2.1.6",
+    "zustand": "^4.3.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

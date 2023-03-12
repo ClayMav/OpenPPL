@@ -1,5 +1,7 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
+import { type Workouts } from "src/types";
+import { useStore } from "../hooks/useStore";
 
 function QuickStartButton({ children, onPress }: any): JSX.Element {
   return (
@@ -19,6 +21,11 @@ export default function HomeTabScreen({
 }: {
   navigation: any;
 }): JSX.Element {
+  const setWorkoutStartTime = useStore((state) => state.setWorkoutStartTime);
+  const onPress = (workout: Workouts): void => {
+    setWorkoutStartTime(Date.now());
+    navigation.navigate("Modal", { workout });
+  };
   return (
     <View className="h-screen">
       <View className="m-6 mb-0">
@@ -30,7 +37,7 @@ export default function HomeTabScreen({
         </Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Modal", { workout: "Legs" });
+            onPress("Legs");
           }}
           className="rounded-full bg-transparent border-2 border-black dark:border-teal-400 flex items-center justify-center py-3 px-6"
         >
@@ -45,21 +52,21 @@ export default function HomeTabScreen({
       <View className="flex flex-row m-2">
         <QuickStartButton
           onPress={() => {
-            navigation.navigate("Modal", { workout: "Push" });
+            onPress("Push");
           }}
         >
           Push
         </QuickStartButton>
         <QuickStartButton
           onPress={() => {
-            navigation.navigate("Modal", { workout: "Pull" });
+            onPress("Pull");
           }}
         >
           Pull
         </QuickStartButton>
         <QuickStartButton
           onPress={() => {
-            navigation.navigate("Modal", { workout: "Legs" });
+            onPress("Legs");
           }}
         >
           Legs

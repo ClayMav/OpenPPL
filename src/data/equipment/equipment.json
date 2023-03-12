@@ -1,58 +1,71 @@
-[
-  {
-    "name": "Barbell",
+{
+  "Barbell": {
+    "weight": true,
+    "maxable": true,
     "color": "#C06687"
   },
-  {
-    "name": "Bench",
+  "Bench": {
     "color": "#82CDF1"
   },
-  {
-    "name": "Incline Bench",
+  "Incline Bench": {
     "color": "#D8E368"
   },
-  {
-    "name": "Dumbells",
+  "Dumbbells": {
+    "weight": true,
+    "maxable": true,
     "color": "#64B5F6"
   },
-  {
-    "name": "Barbell/Dumbell",
-    "color": "#EBA5A5"
-  },
-  {
-    "name": "Overhead Bar",
+  "Overhead Bar": {
     "color": "#C786D2"
   },
-  {
-    "name": "Machine",
+  "Machine": {
+    "weight": true,
+    "maxable": true,
     "color": "#DEDEDE"
   },
-  {
-    "name": "Cables",
-    "color": "#AEDEDE"
-  },
-  {
-    "name": "Knee Raise",
+  "Knee Raise": {
     "color": "#CEEE9E"
   },
-  {
-    "name": "Sit Up Bench",
+  "Sit Up Bench": {
     "color": "#D4EE9E"
   },
-  {
-    "name": "Medicine Ball",
+  "Medicine Ball": {
+    "weight": true,
+    "maxable": false,
     "color": "#A4B49E"
   },
-  {
-    "name": "Cable Machine",
+  "Cable Machine": {
+    "weight": true,
+    "maxable": true,
     "color": "#E4B91E"
   },
-  {
-    "name": "Rollout Wheel",
+  "Rollout Wheel": {
     "color": "#A2B11E"
   },
-  {
-    "name": "Hyperextension Bench",
+  "Hyperextension Bench": {
     "color": "#92B91E"
+  },
+  "Plates": {
+    "weight": true,
+    "maxable": true,
+    "color": "#115192"
+  },
+  "Seated Bench": {
+    "color": "#821143"
+  },
+  "Dips Station": {
+    "color": "#127413"
+  },
+  "Chain Belt": {
+    "color": "#512453"
+  },
+  "Resistance Band": {
+    "color": "#c3afe5"
+  },
+  "Preacher Bench": {
+    "color": "#939f15"
+  },
+  "TRX Bands": {
+    "color": "#139f15"
   }
-]
+}

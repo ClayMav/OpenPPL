@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { useStore } from "../../../hooks/useStore";
 
 import muscleGroups from "../../../assets/images/musclegroups";
 
@@ -31,9 +32,9 @@ function MuscleGroupListItem({
 const zeroPad = (num: number, places: number): string =>
   String(num).padStart(places, "0");
 
-function DurationDisplay({ startTime }: { startTime: Date }): JSX.Element {
+function DurationDisplay({ startTime }: { startTime: number }): JSX.Element {
   const getTimeSince = (): number => {
-    return Date.now() - startTime.getTime();
+    return Date.now() - startTime;
   };
   const [duration, setDuration] = useState(getTimeSince);
 
@@ -56,13 +57,17 @@ export function WorkoutHeader({
   muscleGroups,
   setSelectedGroup,
   selectedGroup,
-  startTime,
 }: {
   muscleGroups: string[];
   setSelectedGroup: (index: number) => void;
   selectedGroup: number;
-  startTime: Date;
 }): JSX.Element {
+  const startTime = useStore((state) => {
+    return state.workoutStartTime;
+  });
+  if (startTime === undefined) {
+    return <></>;
+  }
   return (
     <View>
       <View className="flex flex-row items-center justify-between">
