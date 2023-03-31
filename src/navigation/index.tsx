@@ -72,7 +72,7 @@ function RootNavigator(): JSX.Element {
           name="Modal"
           component={WorkoutScreen}
           options={({ route }) => ({
-            title: `${String(route.params.workout)} Workout`,
+            title: `${String(route.params?.workout)} Workout`,
           })}
         />
       </Stack.Group>

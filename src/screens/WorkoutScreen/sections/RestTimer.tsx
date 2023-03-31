@@ -27,6 +27,7 @@ export function RestTimer({
           duration={startSeconds}
           colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
           colorsTime={[7, 5, 2, 0]}
+          size={150}
         >
           {({ remainingTime }) => (
             <Text className="text-black dark:text-white text-4xl">

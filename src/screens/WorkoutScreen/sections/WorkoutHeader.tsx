@@ -14,15 +14,15 @@ function MuscleGroupListItem({
   active: boolean;
 }): JSX.Element {
   return (
-    <TouchableOpacity className={`w-32 h-32 relative`} onPress={onPress}>
+    <TouchableOpacity className={`w-28 h-28 relative`} onPress={onPress}>
       <Image
         source={muscleGroups[title.toLowerCase()]}
-        className={`w-32 h-32 bg-black`}
+        className={`w-28 h-28 bg-black`}
         style={{
           opacity: active ? 0.8 : 0.3,
         }}
       />
-      <View className={`w-32 h-32 flex justify-end p-2 absolute`}>
+      <View className={`w-28 h-28 flex justify-end p-2 absolute`}>
         <Text className="text-white font-bold text-xl">{title}</Text>
       </View>
     </TouchableOpacity>
@@ -76,7 +76,7 @@ export function WorkoutHeader({
         </Text>
         <DurationDisplay startTime={startTime} />
       </View>
-      <View className="h-32">
+      <View className="h-28">
         <ScrollView horizontal={true} className="flex flex-row">
           {muscleGroups.map((group, index) => {
             return (

@@ -1,36 +1,16 @@
 import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  createJSONStorage,
-  persist,
-  // type StateStorage,
-} from "zustand/middleware";
-// import { MMKV } from "react-native-mmkv";
+import { createJSONStorage, persist } from "zustand/middleware";
 import { type Workouts } from "src/types";
 import { type Exercise } from "src/screens/WorkoutScreen/types";
-
-// const storage = new MMKV();
-
-// const zustandStorage: StateStorage = {
-//   setItem: (name, value) => {
-//     storage.set(name, value);
-//   },
-//   getItem: (name) => {
-//     const value = storage.getString(name);
-//     return value ?? null;
-//   },
-//   removeItem: (name) => {
-//     storage.delete(name);
-//   },
-// };
 
 type ExerciseMaxes = Record<
   string,
   {
     sets: number;
     reps: number;
-    weight: number;
-    calculatedMax: number;
+    weight: number | undefined;
+    calculatedMax: number | undefined;
   }
 >;
 
@@ -39,14 +19,14 @@ interface ZustandState {
   setActiveWorkout: (newWorkout?: Workouts) => void;
   workoutStartTime?: number;
   setWorkoutStartTime: (newStart?: number) => void;
-  workoutMuscleGroups?: string[];
-  setWorkoutMuscleGroups: (newGroups?: string[]) => void;
-  workoutExercises?: Exercise[][];
-  setWorkoutExercises: (newExercises?: Exercise[][]) => void;
-  workoutSelectedMuscleGroup?: number;
-  setWorkoutSelectedMuscleGroup: (newSelected?: number) => void;
-  workoutSelectedExercises?: number[];
-  setWorkoutSelectedExercises: (newSelected?: number[]) => void;
+  workoutMuscleGroups: string[];
+  setWorkoutMuscleGroups: (newGroups: string[]) => void;
+  workoutExercises: Exercise[][];
+  setWorkoutExercises: (newExercises: Exercise[][]) => void;
+  workoutSelectedMuscleGroup: number;
+  setWorkoutSelectedMuscleGroup: (newSelected: number) => void;
+  workoutSelectedExercises: Exercise[];
+  setWorkoutSelectedExercises: (newSelected: Exercise[]) => void;
 
   maxes: ExerciseMaxes;
   setMaxes: (maxes: ExerciseMaxes) => void;
@@ -55,6 +35,10 @@ interface ZustandState {
 export const useStore = create<ZustandState>()(
   persist(
     (set) => ({
+      workoutMuscleGroups: [],
+      workoutExercises: [],
+      workoutSelectedMuscleGroup: 0,
+      workoutSelectedExercises: [],
       setActiveWorkout: (newWorkout?: Workouts) => {
         set(() => {
           return { activeWorkout: newWorkout };
@@ -65,22 +49,22 @@ export const useStore = create<ZustandState>()(
           return { workoutStartTime: newStart };
         });
       },
-      setWorkoutMuscleGroups: (newGroups?: string[]) => {
+      setWorkoutMuscleGroups: (newGroups: string[]) => {
         set(() => {
           return { workoutMuscleGroups: newGroups };
         });
       },
-      setWorkoutExercises: (newExercises?: Exercise[][]) => {
+      setWorkoutExercises: (newExercises: Exercise[][]) => {
         set(() => {
           return { workoutExercises: newExercises };
         });
       },
-      setWorkoutSelectedMuscleGroup: (newSelected?: number) => {
+      setWorkoutSelectedMuscleGroup: (newSelected: number) => {
         set(() => {
           return { workoutSelectedMuscleGroup: newSelected };
         });
       },
-      setWorkoutSelectedExercises: (newSelected?: number[]) => {
+      setWorkoutSelectedExercises: (newSelected: Exercise[]) => {
         set(() => {
           return { workoutSelectedExercises: newSelected };
         });
@@ -94,7 +78,6 @@ export const useStore = create<ZustandState>()(
     }),
     {
       name: "openppl-state",
-      // storage: createJSONStorage(() => zustandStorage),
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

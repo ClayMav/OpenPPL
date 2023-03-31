@@ -391,6 +391,7 @@
         "name": "Hyperextensions",
         "options": [
           {
+            "name": "Hyperextensions",
             "requirements": [
               "Hyperextension Bench"
             ],

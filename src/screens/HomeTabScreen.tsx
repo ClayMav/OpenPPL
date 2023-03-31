@@ -21,10 +21,34 @@ export default function HomeTabScreen({
 }: {
   navigation: any;
 }): JSX.Element {
-  const setWorkoutStartTime = useStore((state) => state.setWorkoutStartTime);
+  const {
+    activeWorkout,
+    setActiveWorkout,
+    setWorkoutStartTime,
+    setWorkoutExercises,
+    setWorkoutMuscleGroups,
+    setWorkoutSelectedExercises,
+    setWorkoutSelectedMuscleGroup,
+  } = useStore((state) => ({
+    activeWorkout: state.activeWorkout,
+    setWorkoutStartTime: state.setWorkoutStartTime,
+    setActiveWorkout: state.setActiveWorkout,
+    setWorkoutMuscleGroups: state.setWorkoutMuscleGroups,
+    setWorkoutExercises: state.setWorkoutExercises,
+    setWorkoutSelectedMuscleGroup: state.setWorkoutSelectedMuscleGroup,
+    setWorkoutSelectedExercises: state.setWorkoutSelectedExercises,
+  }));
   const onPress = (workout: Workouts): void => {
+    setActiveWorkout(undefined);
+    setWorkoutExercises([]);
+    setWorkoutMuscleGroups([]);
+    setWorkoutSelectedExercises([]);
+    setWorkoutSelectedMuscleGroup(0);
     setWorkoutStartTime(Date.now());
     navigation.navigate("Modal", { workout });
+  };
+  const onContinuePress = (): void => {
+    navigation.navigate("Modal", { workout: activeWorkout });
   };
   return (
     <View className="h-screen">
@@ -71,6 +95,16 @@ export default function HomeTabScreen({
         >
           Legs
         </QuickStartButton>
+      </View>
+      <View className=" flex-row w-full justify-between p-6 flex bg-transparent">
+        {activeWorkout !== undefined && (
+          <TouchableOpacity
+            className=" bg-green-400 rounded-full py-4 px-8"
+            onPress={onContinuePress}
+          >
+            <Text className="text-black font-bold">Continue Workout</Text>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
