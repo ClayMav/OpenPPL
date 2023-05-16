@@ -17,6 +17,7 @@ export interface Exercise {
   name: string;
   requirements?: string[];
   optional?: string[];
+  link: string;
 }
 
 export type ExerciseData = {

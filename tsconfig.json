@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json",
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "./built",
@@ -16,5 +16,5 @@
     "strict": true,
     "moduleResolution": "node",
   },
-  "include": ["./App.tsx","./src/**/*","app.d.ts"],
+  "include": ["./App.tsx","./src/**/*","nativewind.d.ts","global.d.ts"],
 }

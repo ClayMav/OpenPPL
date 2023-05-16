@@ -646,7 +646,7 @@
           {
             "name": "Dumbbell Back Squats",
             "requirements": [
-              "Dumbbell"
+              "Dumbbells"
             ],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBSquat"
           },
@@ -660,7 +660,7 @@
           {
             "name": "Dumbbell Front Squats",
             "requirements": [
-              "Dumbbell"
+              "Dumbbells"
             ],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBFrontSquat"
           },
@@ -771,6 +771,7 @@
         "name": "Good-morning",
         "options": [
           {
+            "name": "Good-morning",
             "requirements": [
               "Bench",
               "Barbell"

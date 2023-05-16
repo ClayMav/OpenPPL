@@ -96,16 +96,14 @@ export default function HomeTabScreen({
           Legs
         </QuickStartButton>
       </View>
-      <View className=" flex-row w-full justify-between p-6 flex bg-transparent">
-        {activeWorkout !== undefined && (
-          <TouchableOpacity
-            className=" bg-green-400 rounded-full py-4 px-8"
-            onPress={onContinuePress}
-          >
-            <Text className="text-black font-bold">Continue Workout</Text>
-          </TouchableOpacity>
-        )}
-      </View>
+      {activeWorkout !== undefined && (
+        <TouchableOpacity
+          className=" absolute bottom-32 right-6 bg-green-400 rounded-full py-4 px-8"
+          onPress={onContinuePress}
+        >
+          <Text className="text-black font-bold">Continue Workout</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

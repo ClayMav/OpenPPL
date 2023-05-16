@@ -35,10 +35,10 @@ function ExerciseListItem({
 }): JSX.Element {
   return (
     <TouchableOpacity
-      className=" dark:border-2 dark:border-teal-400 rounded-full dark:shadow-none shadow-sm shadow-black flex p-6 pl-8 pr-8 flex-row items-center mt-6 mx-4 mb-0 justify-between"
+      className=" dark:border-2 dark:border-teal-400 rounded-full dark:shadow-none shadow-sm shadow-black flex p-6 px-8 flex-row items-center mt-6 mx-4 mb-0 justify-between"
       onPress={onPress}
     >
-      <Text className="font-bold text-xl grow basis-44 min-w-0 text-black dark:text-white">
+      <Text className="font-bold text-xl grow basis-12 min-w-0 text-black dark:text-white">
         {title}
       </Text>
       {requirements !== undefined && requirements.length > 0 && (
@@ -96,6 +96,7 @@ export function ExerciseSelectionList({
                   onSelectedExercise({ name: "Other" });
                 }}
               />
+              <View className="h-24" />
             </>
           )}
         </ScrollView>

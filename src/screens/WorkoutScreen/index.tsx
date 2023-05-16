@@ -61,22 +61,18 @@ export default function WorkoutScreen({
     route.params?.workout === undefined ? activeWorkout! : route.params.workout; // name of the workout
   const workoutData = exercisesData[workout];
 
-  // const [muscleGroups, setMuscleGroups] = useState<string[]>([]); // List of muscle groups to be tackled in this workout
   const [muscleGroups, setMuscleGroups] = useStore((state) => [
     state.workoutMuscleGroups,
     state.setWorkoutMuscleGroups,
   ]); // List of muscle groups to be tackled in this workout
-  // const [exercises, setExercises] = useState<Exercise[][]>([]); // List of exercises offered to be tackled in this workout
   const [exercises, setExercises] = useStore((state) => [
     state.workoutExercises,
     state.setWorkoutExercises,
   ]); // List of exercises offered to be tackled in this workout
-  // const [selectedGroup, setSelectedGroup] = useState<number>(0); // Index in the muscleGroup array of the currently selected muscle group
   const [selectedGroup, setSelectedGroup] = useStore((state) => [
     state.workoutSelectedMuscleGroup,
     state.setWorkoutSelectedMuscleGroup,
   ]); // Index in the muscleGroup array of the currently selected muscle group
-  // const [selectedExercises, setSelectedExercises] = useState<Exercise[]>([]); // Exercise data for selected exercise in each group
   const [selectedExercises, setSelectedExercises] = useStore((state) => [
     state.workoutSelectedExercises,
     state.setWorkoutSelectedExercises,

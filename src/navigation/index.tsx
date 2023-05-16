@@ -92,7 +92,7 @@ function BottomTabNavigator(): JSX.Element {
       <BottomTab.Screen
         name="HomeTab"
         component={HomeTabScreen}
-        options={({ navigation }) => ({
+        options={() => ({
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}

@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Linking, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
 import { useStore } from "../../../hooks/useStore";
 import { type EquipmentData, type Exercise } from "../types";
@@ -152,6 +152,10 @@ export function Exercising({
     });
   };
 
+  const openExerciseInfoLink = async (): Promise<void> => {
+    await Linking.openURL(exercise.link);
+  };
+
   return (
     <View className="m-6 grow">
       <View className="flex flex-row items-center mb-6">
@@ -167,9 +171,15 @@ export function Exercising({
             Back
           </Text>
         </TouchableOpacity>
-        <Text className="text-3xl font-bold text-black dark:text-white ml-6 pr-24">
-          {exercise.name}
-        </Text>
+        <TouchableOpacity
+          onPress={() => {
+            void openExerciseInfoLink();
+          }}
+        >
+          <Text className="text-2xl font-bold text-black dark:text-white ml-6 pr-20">
+            {exercise.name}
+          </Text>
+        </TouchableOpacity>
       </View>
       {maxable ? (
         <>

@@ -11,15 +11,15 @@ export function WorkoutActions({
   isLastExercise: boolean;
 }): JSX.Element {
   return (
-    <View className=" flex-row w-full justify-between p-6 flex bg-transparent">
+    <View className="absolute bottom-0 left-0 right-0 flex-row p-4 justify-between flex">
       <TouchableOpacity
-        className=" bg-red-400 rounded-full py-4 px-8"
+        className=" relative bg-red-400 rounded-full py-4 px-5"
         onPress={onEndPress}
       >
         <Text className="font-bold text-black">End Workout</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        className=" bg-green-400 rounded-full py-4 px-8"
+        className=" relative bg-green-400 rounded-full py-4 px-5"
         onPress={onNextPress}
       >
         <Text className="text-black font-bold">
