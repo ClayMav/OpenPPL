@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
+    "build:web": "expo export:web && echo \"/* /index.html 200\" > \"web-build/_redirects\"",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "lint": "eslint src --ext js,jsx,ts,tsx",
