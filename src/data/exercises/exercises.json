@@ -6,25 +6,17 @@
         "options": [
           {
             "name": "Barbell Bench Press",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/PectoralSternal/BBBenchPress"
           },
           {
             "name": "Machine Chest Press",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/PectoralSternal/LVChestPressS"
           },
           {
             "name": "Dumbbell Bench Press",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/PectoralSternal/DBBenchPress"
           }
         ]
@@ -34,25 +26,17 @@
         "options": [
           {
             "name": "Barbell Incline Chest Press",
-            "requirements": [
-              "Barbell",
-              "Incline Bench"
-            ],
+            "requirements": ["Barbell", "Incline Bench"],
             "link": "https://exrx.net/WeightExercises/PectoralClavicular/BBInclineBenchPress"
           },
           {
             "name": "Machine Incline Chest Press",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/PectoralClavicular/LVInclineChestPress"
           },
           {
             "name": "Dumbbell Incline Chest Press",
-            "requirements": [
-              "Dumbbells",
-              "Incline Bench"
-            ],
+            "requirements": ["Dumbbells", "Incline Bench"],
             "link": "https://exrx.net/WeightExercises/PectoralClavicular/DBInclineBenchPress"
           }
         ]
@@ -62,9 +46,7 @@
         "options": [
           {
             "name": "Push Up",
-            "optional": [
-              "Plates"
-            ],
+            "optional": ["Plates"],
             "link": "https://exrx.net/WeightExercises/PectoralSternal/BWPushup"
           },
           {
@@ -78,17 +60,12 @@
         "options": [
           {
             "name": "Dumbbell Lying Chest Fly",
-            "requirements": [
-              "Bench",
-              "Dumbbells"
-            ],
+            "requirements": ["Bench", "Dumbbells"],
             "link": "https://exrx.net/WeightExercises/PectoralSternal/DBFly"
           },
           {
             "name": "Machine Chest Fly",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/PectoralSternal/LVSeatedFly"
           }
         ]
@@ -100,16 +77,12 @@
         "options": [
           {
             "name": "Barbell Military Press",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/BBMilitaryPress"
           },
           {
             "name": "Machine Military Press",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/LVMilitaryPressH"
           }
         ]
@@ -119,25 +92,17 @@
         "options": [
           {
             "name": "Barbell Shoulder Press",
-            "requirements": [
-              "Barbell",
-              "Seated Bench"
-            ],
+            "requirements": ["Barbell", "Seated Bench"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/BBShoulderPress"
           },
           {
             "name": "Dumbbell Shoulder Press",
-            "requirements": [
-              "Dumbbells",
-              "Seated Bench"
-            ],
+            "requirements": ["Dumbbells", "Seated Bench"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/DBShoulderPress"
           },
           {
             "name": "Machine Shoulder Press",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/LVShoulderPress"
           }
         ]
@@ -147,23 +112,17 @@
         "options": [
           {
             "name": "Barbell Front Raise",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/BBFrontRaise"
           },
           {
             "name": "Dumbbell Front Raise",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/DBFrontRaise"
           },
           {
             "name": "Machine Front Raise",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/DeltoidAnterior/LVFrontRaise"
           }
         ]
@@ -173,16 +132,12 @@
         "options": [
           {
             "name": "Barbell Upright Row",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/DeltoidLateral/BBUprightRow"
           },
           {
             "name": "Dumbbell Upright Row",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/DeltoidLateral/DBUprightRow"
           }
         ]
@@ -192,9 +147,7 @@
         "options": [
           {
             "name": "Dumbbell Raise",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/DeltoidLateral/DBRaises"
           }
         ]
@@ -204,16 +157,12 @@
         "options": [
           {
             "name": "Dumbbell Lateral Raise",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/DeltoidLateral/DBLateralRaise"
           },
           {
             "name": "Machine Lateral Raise",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/DeltoidLateral/LVLateralRaise"
           }
         ]
@@ -223,16 +172,12 @@
         "options": [
           {
             "name": "Machine Reverse Fly",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/DeltoidPosterior/LVRearLateralRaise"
           },
           {
             "name": "Cable Reverse Fly",
-            "requirements": [
-              "Cable Machine"
-            ],
+            "requirements": ["Cable Machine"],
             "link": "https://exrx.net/WeightExercises/DeltoidPosterior/CBStandingReverseFly"
           }
         ]
@@ -253,19 +198,13 @@
         "options": [
           {
             "name": "Dips",
-            "requirements": [
-              "Dips Station"
-            ],
-            "optional": [
-              "Chain Belt"
-            ],
+            "requirements": ["Dips Station"],
+            "optional": ["Chain Belt"],
             "link": "https://exrx.net/WeightExercises/Triceps/BWTriDip"
           },
           {
             "name": "Bench Dips",
-            "requirements": [
-              "Bench"
-            ],
+            "requirements": ["Bench"],
             "link": "https://exrx.net/WeightExercises/Triceps/BWBenchDipFloor"
           }
         ]
@@ -275,41 +214,27 @@
         "options": [
           {
             "name": "Barbell Lying Triceps Extension",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/Triceps/BBLyingTriExt"
           },
           {
             "name": "Dumbbell Lying Triceps Extension",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/Triceps/DBLyingTriExt"
           },
           {
             "name": "Barbell Triceps Extension",
-            "requirements": [
-              "Barbell",
-              "Seated Bench"
-            ],
+            "requirements": ["Barbell", "Seated Bench"],
             "link": "https://exrx.net/WeightExercises/Triceps/BBTriExt"
           },
           {
             "name": "Dumbbell Triceps Extension",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/Triceps/DBTriExt"
           },
           {
             "name": "Lever Triceps Extension",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Triceps/LVTriExt"
           }
         ]
@@ -319,9 +244,7 @@
         "options": [
           {
             "name": "Dumbbell Kickback",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Triceps/DBKickback"
           }
         ]
@@ -331,16 +254,12 @@
         "options": [
           {
             "name": "Lever Pushdown",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Triceps/LVPushdown"
           },
           {
             "name": "Cable Pushdown",
-            "requirements": [
-              "Cable Machine"
-            ],
+            "requirements": ["Cable Machine"],
             "link": "https://exrx.net/WeightExercises/Triceps/CBPushdown"
           }
         ]
@@ -354,16 +273,12 @@
         "options": [
           {
             "name": "Barbell Bent-over Row",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/BackGeneral/BBBentOverRow"
           },
           {
             "name": "Dumbbell Bent-over Row",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/BackGeneral/DBBentOverRow"
           }
         ]
@@ -373,16 +288,12 @@
         "options": [
           {
             "name": "Cable Seated Row",
-            "requirements": [
-              "Cable Machine"
-            ],
+            "requirements": ["Cable Machine"],
             "link": "https://exrx.net/WeightExercises/BackGeneral/CBSeatedRow"
           },
           {
             "name": "Machine Seated Row",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/BackGeneral/LVSeatedRow"
           }
         ]
@@ -392,12 +303,8 @@
         "options": [
           {
             "name": "Hyperextensions",
-            "requirements": [
-              "Hyperextension Bench"
-            ],
-            "optional": [
-              "Plates"
-            ],
+            "requirements": ["Hyperextension Bench"],
+            "optional": ["Plates"],
             "link": "https://exrx.net/WeightExercises/ErectorSpinae/BWHyperextensionHips"
           }
         ]
@@ -407,16 +314,12 @@
         "options": [
           {
             "name": "Machine Front Pulldown",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/LatissimusDorsi/LVFrontPulldown"
           },
           {
             "name": "Cable Pulldown",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/LatissimusDorsi/CBFrontPulldown"
           }
         ]
@@ -426,14 +329,8 @@
         "options": [
           {
             "name": "Pull Up",
-            "requirements": [
-              "Overhead Bar"
-            ],
-            "optional": [
-              "Chain Belt",
-              "Plates",
-              "Resistance Band"
-            ],
+            "requirements": ["Overhead Bar"],
+            "optional": ["Chain Belt", "Plates", "Resistance Band"],
             "link": "https://exrx.net/WeightExercises/LatissimusDorsi/BWPullup"
           }
         ]
@@ -443,23 +340,17 @@
         "options": [
           {
             "name": "Barbell Shrug",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/TrapeziusUpper/BBShrug"
           },
           {
             "name": "Dumbbell Shrug",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/TrapeziusUpper/DBShrug"
           },
           {
             "name": "Cable Shrug",
-            "requirements": [
-              "Cable Machine"
-            ],
+            "requirements": ["Cable Machine"],
             "link": "https://exrx.net/WeightExercises/TrapeziusUpper/CBShrug"
           }
         ]
@@ -471,14 +362,8 @@
         "options": [
           {
             "name": "Chin Up",
-            "requirements": [
-              "Overhead Bar"
-            ],
-            "optional": [
-              "Chain Belt",
-              "Plates",
-              "Resistance Band"
-            ],
+            "requirements": ["Overhead Bar"],
+            "optional": ["Chain Belt", "Plates", "Resistance Band"],
             "link": "https://exrx.net/WeightExercises/LatissimusDorsi/BWUnderhandChinup"
           }
         ]
@@ -488,44 +373,32 @@
         "options": [
           {
             "name": "Barbell Curl",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/Biceps/BBCurl"
           },
           {
             "name": "Dumbbell Curl",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Biceps/DBCurl"
           },
           {
             "name": "Machine Curl",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Biceps/LVCurl"
           },
           {
             "name": "Barbell Reverse Curl",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/Brachioradialis/BBReverseCurl"
           },
           {
             "name": "Machine Reverse Curl",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Brachioradialis/LVReverseCurl"
           },
           {
             "name": "Hammer Curl",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Brachioradialis/DBHammerCurl"
           }
         ]
@@ -535,40 +408,27 @@
         "options": [
           {
             "name": "Barbell Preacher Curl",
-            "requirements": [
-              "Barbell",
-              "Preacher Bench"
-            ],
+            "requirements": ["Barbell", "Preacher Bench"],
             "link": "https://exrx.net/WeightExercises/Brachialis/BBPreacherCurl"
           },
           {
             "name": "Machine Preacher Curl",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Brachialis/LVPreacherCurl"
           },
           {
             "name": "Dumbbell Preacher Curl",
-            "requirements": [
-              "Dumbbells",
-              "Preacher Bench"
-            ],
+            "requirements": ["Dumbbells", "Preacher Bench"],
             "link": "https://exrx.net/WeightExercises/Brachialis/DBPreacherCurl"
           },
           {
             "name": "Dumbbell Concentration Curl",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Brachialis/DBConcentrationCurl"
           },
           {
             "name": "Barbell Reverse Preacher Curl",
-            "requirements": [
-              "Barbell",
-              "Preacher Bench"
-            ],
+            "requirements": ["Barbell", "Preacher Bench"],
             "link": "https://exrx.net/WeightExercises/Brachioradialis/BBReversePreacherCurl"
           }
         ]
@@ -578,34 +438,22 @@
         "options": [
           {
             "name": "Barbell Wrist Curl",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/WristFlexors/BBWristCurl"
           },
           {
             "name": "Dumbbell Wrist Curl",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/WristFlexors/DBWristCurl"
           },
           {
             "name": "Dumbbell Reverse Wrist Curl",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/WristExtensors/DBReverseWristCurl"
           },
           {
             "name": "Barbell Reverse Wrist Curl",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/WristExtensors/BBReverseWristCurl"
           }
         ]
@@ -619,16 +467,12 @@
         "options": [
           {
             "name": "Barbell Lunge",
-            "optional": [
-              "Barbell"
-            ],
+            "optional": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/BBLunge"
           },
           {
             "name": "Dumbbell Lunge",
-            "optional": [
-              "Dumbbells"
-            ],
+            "optional": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBLunge"
           }
         ]
@@ -638,46 +482,32 @@
         "options": [
           {
             "name": "Barbell Back Squats",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/BBSquat"
           },
           {
             "name": "Dumbbell Back Squats",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBSquat"
           },
           {
             "name": "Barbell Front Squats",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/BBFrontSquat"
           },
           {
             "name": "Dumbbell Front Squats",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBFrontSquat"
           },
           {
             "name": "Barbell Single Leg Split Squat",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/BBSingleLegSplitSquat"
           },
           {
             "name": "Dumbbell Single Leg Split Squat",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBSingleLegSplitSquat"
           }
         ]
@@ -687,18 +517,12 @@
         "options": [
           {
             "name": "Barbell Step Up",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/BBStepUp"
           },
           {
             "name": "Dumbbell Step Up",
-            "requirements": [
-              "Dumbbells",
-              "Bench"
-            ],
+            "requirements": ["Dumbbells", "Bench"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/DBStepUp"
           }
         ]
@@ -708,9 +532,7 @@
         "options": [
           {
             "name": "Leg Extension",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/LVLegExtension"
           }
         ]
@@ -720,9 +542,7 @@
         "options": [
           {
             "name": "Leg Press",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Quadriceps/LVSeatedLegPress"
           }
         ]
@@ -732,9 +552,7 @@
         "options": [
           {
             "name": "Leg Curl",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Hamstrings/LVLyingLegCurl"
           }
         ]
@@ -744,23 +562,17 @@
         "options": [
           {
             "name": "Barbell Calf Raise",
-            "requirements": [
-              "Barbell"
-            ],
+            "requirements": ["Barbell"],
             "link": "https://exrx.net/WeightExercises/Gastrocnemius/BBStandingCalfRaise"
           },
           {
             "name": "Dumbbell Calf Raise",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Gastrocnemius/DBStandingCalfRaise"
           },
           {
             "name": "Machine Calf Raise",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Gastrocnemius/LVStandingCalfRaise"
           }
         ]
@@ -772,10 +584,7 @@
         "options": [
           {
             "name": "Good-morning",
-            "requirements": [
-              "Bench",
-              "Barbell"
-            ],
+            "requirements": ["Bench", "Barbell"],
             "link": "https://exrx.net/WeightExercises/GluteusMaximus/BBBentKneeGoodMorning"
           }
         ]
@@ -785,16 +594,12 @@
         "options": [
           {
             "name": "Machine Hip Abduction",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/HipAbductor/LVSeatedHipAbduction"
           },
           {
             "name": "Cable Hip Abduction",
-            "requirements": [
-              "Cable Machine"
-            ],
+            "requirements": ["Cable Machine"],
             "link": "https://exrx.net/WeightExercises/HipAbductor/CBHipAbduction"
           }
         ]
@@ -804,17 +609,12 @@
         "options": [
           {
             "name": "Barbell Hip Thrust",
-            "requirements": [
-              "Barbell",
-              "Bench"
-            ],
+            "requirements": ["Barbell", "Bench"],
             "link": "https://exrx.net/WeightExercises/GluteusMaximus/BBHipThrust"
           },
           {
             "name": "Single Leg Hip Thrust",
-            "requirements": [
-              "Bench"
-            ],
+            "requirements": ["Bench"],
             "link": "https://exrx.net/WeightExercises/GluteusMaximus/BWSingleLegHipThrust"
           }
         ]
@@ -826,32 +626,22 @@
         "options": [
           {
             "name": "Barbell Push Crunch",
-            "requirements": [
-              "Sit Up Bench",
-              "Barbell"
-            ],
+            "requirements": ["Sit Up Bench", "Barbell"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/BBPushCrunch"
           },
           {
             "name": "Dumbbell Push Crunch",
-            "requirements": [
-              "Sit Up Bench",
-              "Dumbbells"
-            ],
+            "requirements": ["Sit Up Bench", "Dumbbells"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/DBPushCrunch"
           },
           {
             "name": "Crunch",
-            "options": [
-              "Plates"
-            ],
+            "options": ["Plates"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/BWCrunch"
           },
           {
             "name": "Machine Crunch",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/LVSeatedCrunch"
           }
         ]
@@ -861,18 +651,12 @@
         "options": [
           {
             "name": "Barbell Push Sit Up",
-            "requirements": [
-              "Sit Up Bench",
-              "Barbell"
-            ],
+            "requirements": ["Sit Up Bench", "Barbell"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/BBPushSitUp"
           },
           {
             "name": "Dumbbell Push Sit Up",
-            "requirements": [
-              "Sit Up Bench",
-              "Dumbbells"
-            ],
+            "requirements": ["Sit Up Bench", "Dumbbells"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/DBPushSitUp"
           }
         ]
@@ -882,9 +666,7 @@
         "options": [
           {
             "name": "Ab Coaster",
-            "requirements": [
-              "Machine"
-            ],
+            "requirements": ["Machine"],
             "link": "https://exrx.net/WeightExercises/Obliques/SLSideHipRaiseAbCoaster"
           }
         ]
@@ -894,16 +676,12 @@
         "options": [
           {
             "name": "Leg-Hip Raise",
-            "requirements": [
-              "Knee Raise Station"
-            ],
+            "requirements": ["Knee Raise Station"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/BWVerticalLegHipRaise"
           },
           {
             "name": "Twisting Leg-Hip Raise",
-            "requirements": [
-              "Knee Raise Station"
-            ],
+            "requirements": ["Knee Raise Station"],
             "link": "https://exrx.net/WeightExercises/Obliques/BWHangingVerticalLegRaise"
           }
         ]
@@ -913,9 +691,7 @@
         "options": [
           {
             "name": "Front Plank",
-            "optional": [
-              "Plates"
-            ],
+            "optional": ["Plates"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/BWFrontPlank"
           }
         ]
@@ -925,9 +701,7 @@
         "options": [
           {
             "name": "Side Plank",
-            "optional": [
-              "Dumbbells"
-            ],
+            "optional": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Obliques/BWSidePlank"
           }
         ]
@@ -937,9 +711,7 @@
         "options": [
           {
             "name": "Side Bridge",
-            "optional": [
-              "Dumbbells"
-            ],
+            "optional": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Obliques/BWSideBridge"
           }
         ]
@@ -958,9 +730,7 @@
         "options": [
           {
             "name": "Russian Twist",
-            "optional": [
-              "Medicine Ball"
-            ],
+            "optional": ["Medicine Ball"],
             "link": "https://exrx.net/WeightExercises/Obliques/WTStraightArmRussionTwist"
           }
         ]
@@ -970,9 +740,7 @@
         "options": [
           {
             "name": "Side Bend",
-            "requirements": [
-              "Dumbbells"
-            ],
+            "requirements": ["Dumbbells"],
             "link": "https://exrx.net/WeightExercises/Obliques/DBSideBend"
           }
         ]
@@ -982,9 +750,7 @@
         "options": [
           {
             "name": "Cable Twist",
-            "requirements": [
-              "Cable Machine"
-            ],
+            "requirements": ["Cable Machine"],
             "link": "https://exrx.net/WeightExercises/Obliques/CBTwist"
           }
         ]
@@ -994,12 +760,8 @@
         "options": [
           {
             "name": "Kneeling Rollout",
-            "requirements": [
-              "Rollout Wheel"
-            ],
-            "optional": [
-              "TRX Bands"
-            ],
+            "requirements": ["Rollout Wheel"],
+            "optional": ["TRX Bands"],
             "link": "https://exrx.net/WeightExercises/RectusAbdominis/STRollout"
           }
         ]

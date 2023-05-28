@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   DarkTheme,
@@ -13,21 +13,23 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { Button } from "react-native";
+import { Button, useColorScheme } from "react-native";
 
-import WorkoutScreen from "../screens/WorkoutScreen";
-import NotFoundScreen from "../screens/NotFoundScreen";
-import HomeTabScreen from "../screens/HomeTabScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
-import { type RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
-import useColorScheme from "../hooks/useColorScheme";
+import CalendarScreen from "../screens/CalendarScreen";
+import ExercisesScreen from "../screens/ExercisesScreen";
+import HomeScreen from "../screens/HomeScreen";
+import MaxesScreen from "../screens/MaxesScreen";
+import NotFoundScreen from "../screens/NotFoundScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import WorkoutScreen from "../screens/WorkoutScreen";
+import { type RootStackParamList } from "../types";
 
 export default function Navigation(): JSX.Element {
-  const scheme = useColorScheme();
+  const colorScheme = useColorScheme();
   return (
     <NavigationContainer
-      theme={scheme === "dark" ? DarkTheme : DefaultTheme}
+      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
       linking={LinkingConfiguration}
     >
       <RootNavigator />
@@ -90,16 +92,46 @@ function BottomTabNavigator(): JSX.Element {
   return (
     <BottomTab.Navigator initialRouteName="HomeTab">
       <BottomTab.Screen
-        name="HomeTab"
-        component={HomeTabScreen}
+        name="Home"
+        component={HomeScreen}
         options={() => ({
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Calendar"
+        component={CalendarScreen}
+        options={() => ({
+          title: "Calendar",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="calendar" color={color} />
+          ),
+        })}
+      />
+      <BottomTab.Screen
+        name="Maxes"
+        component={MaxesScreen}
+        options={() => ({
+          title: "Maxes",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="weight-pound" color={color} />
+          ),
+        })}
+      />
+      <BottomTab.Screen
+        name="Exercises"
+        component={ExercisesScreen}
+        options={() => ({
+          title: "Exercises",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="weight-lifter" color={color} />
+          ),
+        })}
+      />
+      <BottomTab.Screen
+        name="SettingsTab"
+        component={SettingsScreen}
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
@@ -113,8 +145,10 @@ function BottomTabNavigator(): JSX.Element {
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
+  name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
   color: string;
 }): JSX.Element {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return (
+    <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />
+  );
 }

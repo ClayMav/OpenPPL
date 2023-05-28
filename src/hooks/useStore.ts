@@ -1,8 +1,9 @@
-import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { type Workouts } from "src/types";
-import { type Exercise } from "src/screens/WorkoutScreen/types";
+
+import { type Exercise } from "../screens/WorkoutScreen/types";
+import { type Workout } from "../types";
 
 type ExerciseMaxes = Record<
   string,
@@ -15,8 +16,8 @@ type ExerciseMaxes = Record<
 >;
 
 interface ZustandState {
-  activeWorkout?: Workouts;
-  setActiveWorkout: (newWorkout?: Workouts) => void;
+  activeWorkout?: Workout;
+  setActiveWorkout: (newWorkout?: Workout) => void;
   workoutStartTime?: number;
   setWorkoutStartTime: (newStart?: number) => void;
   workoutMuscleGroups: string[];
@@ -39,7 +40,7 @@ export const useStore = create<ZustandState>()(
       workoutExercises: [],
       workoutSelectedMuscleGroup: 0,
       workoutSelectedExercises: [],
-      setActiveWorkout: (newWorkout?: Workouts) => {
+      setActiveWorkout: (newWorkout?: Workout) => {
         set(() => {
           return { activeWorkout: newWorkout };
         });

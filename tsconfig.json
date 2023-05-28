@@ -16,5 +16,5 @@
     "strict": true,
     "moduleResolution": "node",
   },
-  "include": ["./App.tsx","./src/**/*","nativewind.d.ts","global.d.ts"],
+  "include": ["./App.tsx","./App.native.tsx","./src/**/*","nativewind.d.ts","global.d.ts"],
 }

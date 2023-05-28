@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
-import { type Equipment, type EquipmentData, type Exercise } from "../types";
+
 import equipment from "../../../data/equipment/equipment.json";
+import { type Equipment, type EquipmentData, type Exercise } from "../types";
 
 export const equipmentData = equipment as EquipmentData;
 

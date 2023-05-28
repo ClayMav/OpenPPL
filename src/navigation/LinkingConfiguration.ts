@@ -13,14 +13,29 @@ const linking: LinkingOptions<any> = {
     screens: {
       Root: {
         screens: {
-          HomeTab: {
+          Home: {
             screens: {
-              HomeTabScreen: "one",
+              HomeScreen: "home",
             },
           },
-          TabTwo: {
+          Calendar: {
             screens: {
-              TabTwoScreen: "two",
+              CalendarScreen: "calendar",
+            },
+          },
+          Maxes: {
+            screens: {
+              MaxesScreen: "maxes",
+            },
+          },
+          Exercises: {
+            screens: {
+              ExercisesScreen: "exercises",
+            },
+          },
+          Settings: {
+            screens: {
+              SettingsScreen: "settings",
             },
           },
         },

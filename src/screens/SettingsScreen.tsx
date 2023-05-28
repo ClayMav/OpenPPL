@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export default function TabTwoScreen(): JSX.Element {
+export default function SettingsScreen(): JSX.Element {
   return (
     <View>
-      <Text>Tab Two</Text>
+      <Text>Settings</Text>
       <View />
     </View>
   );

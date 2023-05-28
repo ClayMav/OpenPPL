@@ -2,10 +2,12 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { Linking, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
-import { useStore } from "../../../hooks/useStore";
-import { type EquipmentData, type Exercise } from "../types";
+import { shallow } from "zustand/shallow";
+
 import { RestTimer } from "./RestTimer";
 import equipment from "../../../data/equipment/equipment.json";
+import { useStore } from "../../../hooks/useStore";
+import { type EquipmentData, type Exercise } from "../types";
 
 const equipmentData = equipment as EquipmentData;
 
@@ -56,7 +58,7 @@ export function Exercising({
 }): JSX.Element {
   const { maxes, setMaxes } = useStore((state) => {
     return state;
-  });
+  }, shallow);
   const [firstTime] = useState(maxes[exercise.name] === undefined);
   const [percent, setPercent] = useState(60); // TODO: Make interactive and not constant
   const [sets, setSets] = useState(3); // TODO: Make interactive and not constant

@@ -1,7 +1,9 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-import { type Workouts } from "src/types";
+import { shallow } from "zustand/shallow";
+
 import { useStore } from "../hooks/useStore";
+import { type Workout } from "../types";
 
 function QuickStartButton({ children, onPress }: any): JSX.Element {
   return (
@@ -29,16 +31,19 @@ export default function HomeTabScreen({
     setWorkoutMuscleGroups,
     setWorkoutSelectedExercises,
     setWorkoutSelectedMuscleGroup,
-  } = useStore((state) => ({
-    activeWorkout: state.activeWorkout,
-    setWorkoutStartTime: state.setWorkoutStartTime,
-    setActiveWorkout: state.setActiveWorkout,
-    setWorkoutMuscleGroups: state.setWorkoutMuscleGroups,
-    setWorkoutExercises: state.setWorkoutExercises,
-    setWorkoutSelectedMuscleGroup: state.setWorkoutSelectedMuscleGroup,
-    setWorkoutSelectedExercises: state.setWorkoutSelectedExercises,
-  }));
-  const onPress = (workout: Workouts): void => {
+  } = useStore(
+    (state) => ({
+      activeWorkout: state.activeWorkout,
+      setWorkoutStartTime: state.setWorkoutStartTime,
+      setActiveWorkout: state.setActiveWorkout,
+      setWorkoutMuscleGroups: state.setWorkoutMuscleGroups,
+      setWorkoutExercises: state.setWorkoutExercises,
+      setWorkoutSelectedMuscleGroup: state.setWorkoutSelectedMuscleGroup,
+      setWorkoutSelectedExercises: state.setWorkoutSelectedExercises,
+    }),
+    shallow
+  );
+  const onPress = (workout: Workout): void => {
     setActiveWorkout(undefined);
     setWorkoutExercises([]);
     setWorkoutMuscleGroups([]);

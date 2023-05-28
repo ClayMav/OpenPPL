@@ -9,10 +9,10 @@ import {
 } from "@react-navigation/native";
 import { type NativeStackScreenProps } from "@react-navigation/native-stack";
 
-export type Workouts = "Push" | "Pull" | "Legs";
+export type Workout = "Push" | "Pull" | "Legs";
 export interface RootStackParamList extends ParamListBase {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: { workout: Workouts };
+  Modal: { workout: Workout };
   NotFound: undefined;
 }
 
@@ -20,8 +20,11 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
 
 export interface RootTabParamList {
-  HomeTab: undefined;
-  TabTwo: undefined;
+  Home: undefined;
+  Calendar: undefined;
+  Maxes: undefined;
+  Exercises: undefined;
+  Settings: undefined;
 }
 
 // export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

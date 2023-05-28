@@ -1,5 +1,3 @@
-import * as Notifications from "expo-notifications";
-
 export function shuffle<T>(array: T[]): T[] {
   if (array.length < 2) {
     return array;
@@ -23,17 +21,4 @@ export function shuffle<T>(array: T[]): T[] {
   return array;
 }
 
-export async function sendNotification(
-  body: string,
-  title = "PushPullLegs"
-): Promise<void> {
-  await Notifications.scheduleNotificationAsync({
-    content: {
-      title,
-      body,
-      sound: true,
-      vibrate: [10, 10, 10],
-    },
-    trigger: null,
-  });
-}
+export * from "./notifications";

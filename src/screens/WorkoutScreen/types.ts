@@ -1,4 +1,4 @@
-import { type Workouts } from "src/types";
+import { type Workout } from "../../types";
 
 export interface Equipment {
   color: string;
@@ -21,5 +21,5 @@ export interface Exercise {
 }
 
 export type ExerciseData = {
-  [key in Workouts]: Record<string, ExerciseType[]>;
+  [key in Workout]: Record<string, ExerciseType[]>;
 };
